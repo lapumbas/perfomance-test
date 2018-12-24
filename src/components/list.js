@@ -1,13 +1,15 @@
 import React from 'react';
-import uniqueId from 'lodash.uniqueid';
 import ListItem from './list_item';
 
 const listItemStyle = {
   cursor: 'pointer',
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'space-between',
-  margin: 5
+  justifyContent: 'center',
+  margin: 5,
+  padding: 5,
+  backgroundColor: '#ccc',
+  width: 200
 };
 
 export default class List extends React.PureComponent {
@@ -16,7 +18,7 @@ export default class List extends React.PureComponent {
     this.state = {
       counter: 0
     };
-    this.onListItemClick = this.onListItemClick.bind(this);
+    // this.onListItemClick = this.onListItemClick.bind(this);
   }
 
   onCounterClick = () => {
@@ -24,8 +26,10 @@ export default class List extends React.PureComponent {
     this.setState({ counter });
   };
 
-  onListItemClick(index, e) {
-    this.props.onClick(e, index);
+  onListItemClick(index) {
+    return e => {
+      this.props.onListItemClick(e, index);
+    };
   }
 
   renderList = () => {
@@ -33,13 +37,14 @@ export default class List extends React.PureComponent {
     console.log('renderList');
 
     return (
-      <div>
+      <ul>
         {data.map((item, i) => {
           return (
             <ListItem
               // onClick={this.onListItemClick.bind(this, i)}
               // onClick={(e) => this.props.onClick(i, e)}
-              onClick={this.props.onClick}
+              onClick={this.props.onListItemClick}
+              item={item}
               index={i}
               key={`${item}-${i}`}
               style={listItemStyle}
@@ -48,20 +53,24 @@ export default class List extends React.PureComponent {
               //     cursor: 'pointer',
               //     display: 'flex',
               //     alignItems: 'center',
-              //     justifyContent: 'space-between',
-              //     margin: 5
+              //     justifyContent: 'center',
+              //     margin: 5,
+              //     padding: 5,
+              //     backgroundColor: 'ccc',
+              //     width: 200
               //   })
               // }
             />
           );
         })}
-      </div>
+      </ul>
     );
   };
 
   render() {
     return (
       <div>
+        <br />
         <button onClick={this.onCounterClick}>{`update list ${this.state.counter}`}</button>
         {this.renderList()}
       </div>
