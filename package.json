@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "lodash": "^4.17.11",
-    "react": "16.4.0",
-    "react-dom": "16.4.0",
+    "lodash.uniqueid": "^4.0.1",
+    "react": "next",
+    "react-dom": "next",
     "react-scripts": "2.1.1"
   },
   "scripts": {

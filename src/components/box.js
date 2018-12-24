@@ -9,8 +9,12 @@ const boxStyle = {
   alignItems: 'center'
 };
 
-export default class Box extends React.Component {
+export default class Box extends React.PureComponent {
   render() {
-    return <div style={boxStyle}>box</div>;
+    return (
+      <div  onClick={this.props.onClick} style={boxStyle}>
+        <p style={this.props.style}>box</p>
+      </div>
+    );
   }
 }
