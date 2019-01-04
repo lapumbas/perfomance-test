@@ -26,11 +26,9 @@ export default class List extends React.PureComponent {
     this.setState({ counter });
   };
 
-  onListItemClick(index) {
-    return e => {
-      this.props.onListItemClick(e, index);
-    };
-  }
+  onListItemClick = index => e => {
+    this.props.onListItemClick(e, index);
+  };
 
   renderList = () => {
     const { data } = this.props;

@@ -9,7 +9,7 @@ export default class Container extends React.Component {
 
   componentWillMount() {
     const list = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 1000; i++) {
       list.push(i);
     }
     this.setState({ list });
